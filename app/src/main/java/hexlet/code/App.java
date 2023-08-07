@@ -28,8 +28,16 @@ class App implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        Map<String, String> file1 = Differ.getData(Paths.get(filepath1));
-        Map<String, String> file2 = Differ.getData(Paths.get(filepath2));
+        Path absolutePath1 = Paths.get(filepath1).toAbsolutePath().normalize();
+        if (!Files.exists(absolutePath1)) {
+            throw new Exception("File '" + absolutePath1 + "' does not exist");
+        }
+        Path absolutePath2 = Paths.get(filepath2).toAbsolutePath().normalize();
+        if (!Files.exists(absolutePath2)) {
+            throw new Exception("File '" + absolutePath2 + "' does not exist");
+        }
+        Map<String, String> file1 = Differ.getData(absolutePath1);
+        Map<String, String> file2 = Differ.getData(absolutePath2);
 
         System.out.println(Differ.generate(file1, file2));
         return 0;

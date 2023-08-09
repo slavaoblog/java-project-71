@@ -23,6 +23,7 @@ public class Differ {
         }
         return result;
     }
+
     public static String generate(Map map1, Map map2) {
         Set<String> combinedKeySet = new LinkedHashSet<>();
         combinedKeySet.addAll(map1.keySet());
@@ -36,16 +37,13 @@ public class Differ {
             if (!map1.containsKey(key)) {
                 result
                         .append("  + " + key + ": " + map2.get(key) + "\n");
-            }
-            else if (!map2.containsKey(key)) {
+            } else if (!map2.containsKey(key)) {
                 result
                         .append("  - " + key + ": " + map1.get(key) + "\n");
-            }
-            else if (map1.get(key).equals(map2.get(key))) {
+            } else if (map1.get(key).equals(map2.get(key))) {
                 result
                         .append("    " + key + ": " + map1.get(key) + "\n");
-            }
-            else if (!map1.get(key).equals(map2.get(key))) {
+            } else if (!map1.get(key).equals(map2.get(key))) {
                 result
                         .append("  - " + key + ": " + map1.get(key) + "\n")
                         .append("  + " + key + ": " + map2.get(key) + "\n");

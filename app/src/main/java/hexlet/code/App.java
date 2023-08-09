@@ -1,6 +1,6 @@
 package hexlet.code;
 
-import org.codehaus.jackson.map.ObjectMapper;
+//import org.codehaus.jackson.map.ObjectMapper;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
@@ -9,9 +9,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+//import java.util.*;
+import java.util.Map;
 import java.util.concurrent.Callable;
-
 
 
 @Command(name = "gendiff", mixinStandardHelpOptions = true, version = "gendiff 1.0",
@@ -23,7 +23,8 @@ class App implements Callable<Integer> {
     @Parameters(index = "1", paramLabel = "filepath2", description = "path to second file")
     private String filepath2;
 
-    @CommandLine.Option(names = {"-f", "--format"}, paramLabel = "format", description = "output format [default: stylish]")
+    @CommandLine.Option(names = {"-f", "--format"}, paramLabel = "format",
+            description = "output format [default: stylish]")
     private String format = "stylish";
 
     @Override

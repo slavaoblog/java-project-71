@@ -17,6 +17,7 @@ application {
 
 dependencies {
     implementation 'com.fasterxml:jackson-xml-databind:0.6.2'
+    implementation 'checkstyle:checkstyle:5.0'
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation 'info.picocli:picocli:4.7.4'

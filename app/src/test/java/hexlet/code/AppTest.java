@@ -11,7 +11,7 @@ public class AppTest {
 
     @Test
     void testGetData() throws Exception {
-        String filePath = "/home/smart/java-project-71/app/src/test/resources/file1.jsn";
+        String filePath = "src/test/resources/file1.jsn";
         Path path = Paths.get(filePath);
         Map map = Differ.getData(path);
 
@@ -21,7 +21,7 @@ public class AppTest {
 
     @Test
     void testGenerate() throws Exception {
-        String filePath1 = "/home/smart/java-project-71/app/src/test/resources/file1.jsn";
+        String filePath1 = "src/test/resources/file1.jsn";
         String filePath2 = "src/test/resources/file2.jsn";
 
         Path path1 = Paths.get(filePath1);
@@ -29,6 +29,6 @@ public class AppTest {
         String str = Differ.generate(Differ.getData(path1), Differ.getData(path2));
 
         System.out.println(str);
-        assertThat(str.contains("follow: false"));
+        assertThat(str.contains("- follow: false"));
     }
 }

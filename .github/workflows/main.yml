@@ -22,7 +22,7 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
           JACOCO_SOURCE_PATH: ./app/src/main/java
+          uses: cc-test-reporter after-build
         with:
           coverageCommand: make report
-          uses: cc-test-reporter after-build
           coverageLocations: ${{github.workspace}}/app/build/customJacocoReportDir/test/jacocoTestReport.xml:jacoco

@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -54,7 +53,7 @@ public class Differ {
         return result.toString();
     }
 
-    public static Path absolutePath(String path) throws Exception{
+    public static Path absolutePath(String path) throws Exception {
         Path absolutePath = Paths.get(path).toAbsolutePath().normalize();
         if (!Files.exists(absolutePath)) {
             throw new Exception("File '" + absolutePath + "' does not exist");

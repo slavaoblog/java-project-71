@@ -1,16 +1,10 @@
 package hexlet.code;
 
-//import org.codehaus.jackson.map.ObjectMapper;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-//import java.util.*;
-import java.util.Map;
 import java.util.concurrent.Callable;
 
 
@@ -29,18 +23,7 @@ class App implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        Path absolutePath1 = Paths.get(filepath1).toAbsolutePath().normalize();
-        if (!Files.exists(absolutePath1)) {
-            throw new Exception("File '" + absolutePath1 + "' does not exist");
-        }
-        Path absolutePath2 = Paths.get(filepath2).toAbsolutePath().normalize();
-        if (!Files.exists(absolutePath2)) {
-            throw new Exception("File '" + absolutePath2 + "' does not exist");
-        }
-        Map<String, String> file1 = Differ.getData(absolutePath1);
-        Map<String, String> file2 = Differ.getData(absolutePath2);
-
-        System.out.println(Differ.generate(file1, file2));
+        System.out.println(Differ.generate(filepath1, filepath2));
         return 0;
     }
 

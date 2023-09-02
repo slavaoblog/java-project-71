@@ -4,9 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
 
 public class AppTest {
     private final String filepath1Json = ("src/test/resources/file1.jsn");

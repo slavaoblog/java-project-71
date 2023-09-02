@@ -7,21 +7,14 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Differ {
     public static HashMap<String, String> getData(Path path) throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
-        StringBuilder sb = new StringBuilder();
-        Files.readAllLines(path)
-                .forEach(sb::append);
-        HashMap map = mapper.readValue(sb.toString(), HashMap.class);
-        HashMap<String, String> result = new HashMap<>();
-        for (Object key : map.keySet()) {
-            result.put((String) key, "" + map.get(key));
-        }
-        return result;
+        String content = new String(Files.readAllBytes(path));
+        return Parser.parse(content);
     }
 
     public static String generate(String filePath1, String filePath2) throws Exception {

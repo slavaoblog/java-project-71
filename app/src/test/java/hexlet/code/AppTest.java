@@ -11,19 +11,18 @@ import java.util.HashMap;
 public class AppTest {
     private final String filepath1Json = ("src/test/resources/file1.jsn");
     private final String filepath2Json = ("src/test/resources/file2.jsn");
+    private final String filepath1Yaml = ("src/test/resources/file1.yml");
+    private final String filepath2Yaml = ("src/test/resources/file2.yml");
 
     @Test
-    void testGetData() throws Exception {
-        Path path = Paths.get(filepath1Json);
-        HashMap map = Differ.getData(path);
-
-        assertThat(map.containsKey("follow")).isTrue();
-        assertThat(map.get("host")).isEqualTo("hexlet.io");
-    }
-
-    @Test
-    void testGenerate() throws Exception {
+    void testStylishJson() throws Exception {
         String actual = Differ.generate(filepath1Json, filepath2Json);
+        String expected = Files.readString(Paths.get("src/test/resources/stylish_json.jsn"));
+        assertThat(actual).isEqualTo(expected);
+    }
+    @Test
+    void testPlainYaml() throws Exception {
+        String actual = Differ.generate(filepath1Yaml, filepath2Yaml);
         String expected = Files.readString(Paths.get("src/test/resources/stylish_json.jsn"));
         assertThat(actual).isEqualTo(expected);
     }

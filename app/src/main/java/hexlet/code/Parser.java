@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.HashMap;
 
 public class Parser {
-    public static HashMap<String, String> parse(String content) throws Exception {
+    public static HashMap<String, Object> parse(String content) throws Exception {
         return parseContent(content);
 //        ObjectMapper mapper = new ObjectMapper();
 //        StringBuilder sb = new StringBuilder();
@@ -22,9 +22,9 @@ public class Parser {
 //        return result;
     }
 
-    public static HashMap<String, String> parseContent(String content) throws JsonProcessingException {
+    public static HashMap<String, Object> parseContent(String content) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
-        return objectMapper.readValue(content, new TypeReference<HashMap<String, String>>() { });
+        return objectMapper.readValue(content, new TypeReference<>() { });
     }
 }
 

@@ -55,4 +55,20 @@ public class AppTest {
         System.out.println(actual);
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    void testYamlJson() throws Exception {
+        String actual = Differ.generate(filepath1Yaml, filepath2Yaml, "json");
+        String expected = Files.readString(Paths.get("src/test/resources/json"));
+        System.out.println(actual);
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonToJson() throws Exception {
+        String actual = Differ.generate(filepath1Json, filepath2Json, "json");
+        String expected = Files.readString(Paths.get("src/test/resources/json"));
+        System.out.println(actual);
+        assertThat(actual).isEqualTo(expected);
+    }
 }

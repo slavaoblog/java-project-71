@@ -18,12 +18,12 @@ class App implements Callable {
     private String filepath2;
 
     @CommandLine.Option(names = {"-f", "--format"}, defaultValue = "stylish", paramLabel = "format",
-            description = "output format \"stylish\" or \"plain\" [default: stylish]")
+            description = "output format \"stylish\", \"plain\" or \"json\" [default: stylish]")
     private String format = "stylish";
 
     @Override
     public Integer call() throws Exception {
-        System.out.println(Differ.generate(filepath1, filepath2));
+        System.out.println(Differ.generate(filepath1, filepath2, format));
         return 0;
     }
 

@@ -15,18 +15,18 @@ public class Stylish {
             Object newValue = element.getNewValue();
             switch (typeOfChange) {
                 case "added":
-                result.append("  + ").append(key).append(": ").append(newValue).append("\n");
-                break;
+                    result.append("  + ").append(key).append(": ").append(newValue).append("\n");
+                    break;
                 case "deleted":
-                result.append("  - ").append(key).append(": ").append(oldValue).append("\n");
-                break;
+                    result.append("  - ").append(key).append(": ").append(oldValue).append("\n");
+                    break;
                 case "unchanged":
-                result.append("    ").append(key).append(": ").append(oldValue).append("\n");
-                break;
+                    result.append("    ").append(key).append(": ").append(oldValue).append("\n");
+                    break;
                 case "changed":
-                result.append("  - ").append(key).append(": ").append(oldValue).append("\n")
-                        .append("  + ").append(key).append(": ").append(newValue).append("\n");
-                break;
+                    result.append("  - ").append(key).append(": ").append(oldValue).append("\n")
+                            .append("  + ").append(key).append(": ").append(newValue).append("\n");
+                    break;
                 default:
                     break;
             }

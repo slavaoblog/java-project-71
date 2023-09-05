@@ -1,7 +1,5 @@
 package hexlet.code;
 
-import hexlet.code.formatters.Stylish;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,12 +12,16 @@ public class Differ {
         return Parser.parse(content);
     }
 
-    public static String generate(String filePath1, String filePath2) throws Exception {
+    public static String generate(String filePath1, String filePath2, String format) throws Exception {
         HashMap<String, Object> map1 = getData(absolutePath(filePath1));
         HashMap<String, Object> map2 = getData(absolutePath(filePath2));
 
         List<Node> differences = DiffCalculator.calculate(map1, map2);
-        return Stylish.format(differences);
+        return Formatter.format(differences, format);
+    }
+
+    public static String generate(String filePath1, String filePath2) throws Exception {
+        return generate(filePath1, filePath2, "stylish");
     }
 
     public static Path absolutePath(String path) throws Exception {

@@ -16,23 +16,42 @@ public class AppTest {
     private final String filepath3Yaml = ("src/test/resources/file3.yml");
     private final String filepath4Yaml = ("src/test/resources/file4.yml");
 
-//    @Test
-//    void testStylishJson() throws Exception {
-//        String actual = Differ.generate(filepath1Json, filepath2Json);
-//        String expected = Files.readString(Paths.get("src/test/resources/output_plain"));
-//        assertThat(actual).isEqualTo(expected);
-//    }
-//    @Test
-//    void testPlainYaml() throws Exception {
-//        String actual = Differ.generate(filepath1Yaml, filepath2Yaml);
-//        String expected = Files.readString(Paths.get("src/test/resources/output_plain"));
-//        assertThat(actual).isEqualTo(expected);
-//    }
+    @Test
+    void testJsonStylish() throws Exception {
+        String actual = Differ.generate(filepath1Json, filepath2Json);
+        String expected = Files.readString(Paths.get("src/test/resources/stylish"));
+        System.out.println(actual);
+        assertThat(actual).isEqualTo(expected);
+    }
 
     @Test
-    void testNestedJson() throws Exception {
+    void testYamlStylish() throws Exception {
+        String actual = Differ.generate(filepath1Yaml, filepath2Yaml);
+        String expected = Files.readString(Paths.get("src/test/resources/stylish"));
+        System.out.println(actual);
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonStylishNested() throws Exception {
         String actual = Differ.generate(filepath3Json, filepath4Json);
-        String expected = Files.readString(Paths.get("src/test/resources/output_nested"));
+        String expected = Files.readString(Paths.get("src/test/resources/stylish_nested"));
+        System.out.println(actual);
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonPlain() throws Exception {
+        String actual = Differ.generate(filepath3Json, filepath4Json, "plain");
+        String expected = Files.readString(Paths.get("src/test/resources/plain"));
+        System.out.println(actual);
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void testYamlPlain() throws Exception {
+        String actual = Differ.generate(filepath3Yaml, filepath4Yaml, "plain");
+        String expected = Files.readString(Paths.get("src/test/resources/plain"));
         System.out.println(actual);
         assertThat(actual).isEqualTo(expected);
     }
